@@ -6,11 +6,11 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: %i[show edit update destroy]
 
   def index
-    @questions = current_user.questions.all
+    @questions = current_user.questions.all.datetime
   end
 
   def all_questions
-    @questions = Question.all
+    @questions = Question.all.datetime
   end
 
   def show; end
