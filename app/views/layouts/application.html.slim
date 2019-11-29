@@ -7,10 +7,28 @@ html
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   body
-    - if user_signed_in?
-      li= link_to('Logout', destroy_user_session_path, method: :delete)
-    - else
-      li= link_to('Login', new_user_session_path)
+    nav.navbar.navbar-expand.navbar-dark.bg-dark
+      a.navbar-brand href="#"  Q & A ?
+      button.navbar-toggler aria-controls="navbarsExample02" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarsExample02" data-toggle="collapse" type="button" 
+        span.navbar-toggler-icon
+      #navbarsExample02.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link href="#"
+              | Home
+              span.sr-only (current)
+          li.nav-item
+            = link_to('All Questions', all_questions_path, class: 'nav-link')
+          li.nav-item
+            = link_to('My Questions', questions_path, class: 'nav-link')
+          - if user_signed_in?
+            li.nav-item
+              = link_to('Logout', destroy_user_session_path, method: :delete, class: 'nav-link')
+          - else
+            li.nav-item
+              = link_to('Login', new_user_session_path, class: 'nav-link')
+        form.form-inline.my-2.my-md-0
+          input.form-control placeholder="Search" type="text" /
     p.notice= notice
     p.alert= alert
     = yield
