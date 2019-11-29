@@ -1,5 +1,5 @@
 .container
-  h1 Questions
+  h1 All Questions
 
   table.table
     thead
@@ -18,9 +18,3 @@
           td = question.description
           td = question.user.email
           td = link_to 'Show', question, class: 'btn btn-outline-primary'
-          td = link_to 'Edit', edit_question_path(question), class: 'btn btn-outline-primary'
-          td = link_to 'Delete', question, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger'
-
-  br
-
-  = link_to 'New Question', new_question_path, class: 'btn btn-primary'

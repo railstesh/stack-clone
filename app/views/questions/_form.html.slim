@@ -6,13 +6,13 @@
         - @question.errors.full_messages.each do |message|
           li = message
 
-  .field
+  .form-group
     = f.label :title
-    = f.text_field :title
-  .field
+    = f.text_field :title, class: "form-control"
+  .form-group
     = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :user
-    = f.text_field :user
-  .actions = f.submit
+    = f.text_area :description, class: "form-control"
+  = f.hidden_field :user_id, value: current_user.id
+  .form-group
+    = f.submit class: "btn btn-primary"
+    = link_to 'Back', :back, class: "btn btn-primary ml-2"

@@ -1,15 +1,22 @@
-p#notice = notice
+.container
+  p#notice = notice
 
-p
-  strong Title:
-  = @question.title
-p
-  strong Description:
-  = @question.description
-p
-  strong User:
-  = @question.user
+  .card.shadow.rounded
+    .card-body
+      h3 = @question.title
+      = @question.description
+      p
+        strong User:
+        = @question.user.email
 
-=> link_to 'Edit', edit_question_path(@question)
-'|
-=< link_to 'Back', questions_path
+      / = link_to 'Edit', edit_question_path(@question)
+      / '|
+      / = link_to 'Back', questions_path
+      hr
+      - if current_user
+        = render 'answers/form'
+      - else
+        p you must login to answer this question.
+
+      h5 Answers:
+      =  render @question.answers.order(created_at: :desc)
