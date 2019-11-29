@@ -29,6 +29,8 @@ html
               = link_to('Login', new_user_session_path, class: 'nav-link')
         form.form-inline.my-2.my-md-0
           input.form-control placeholder="Search" type="text" /
-    p.notice= notice
-    p.alert= alert
+    .container
+      - flash.each do |key, value|
+        div class="#{flash_class(key.to_sym)}"
+          = value
     = yield
