@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
+  gem 'faker'
   gem 'rspec-rails'
   gem 'shoulda-matchers', require: false
   # Adds support for Capybara system testing and selenium driver
