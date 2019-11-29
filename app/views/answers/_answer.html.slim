@@ -1,0 +1,12 @@
+.answer
+  - if answer.description.present?
+    .card
+      .card-body
+        = answer.description
+        p
+          strong user:
+          = answer.user&.email
+        - if current_user
+          p = link_to 'Delete Answer', answer,
+                        method: :delete, data: { confirm: 'Are you sure?' },
+                    remote: true, class: 'delete_answer text-danger'
