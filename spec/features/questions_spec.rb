@@ -5,6 +5,7 @@ require 'rails_helper'
 describe 'new question', type: :feature, js: true do
   let(:user) { FactoryBot.create(:user) }
   let!(:question) { FactoryBot.create(:question) }
+  let!(:valid_attributes) { { title: 'aaaaa', description: 'aaaaa', user_id: user.id } }
 
   before do
     login_as(user, scope: :user)
@@ -24,6 +25,7 @@ describe 'new question', type: :feature, js: true do
 
   context 'when user try to see a question' do
     it 'they see a question and its answers' do
+      Question.create! valid_attributes
       visit '/questions'
       click_link 'Show'
       expect(page).to have_link 'Back'
@@ -39,6 +41,7 @@ describe 'new question', type: :feature, js: true do
 
   context 'when user try to delete a question' do
     it 'they see a successfull message' do
+      Question.create! valid_attributes
       visit '/questions'
       accept_confirm do
         click_link 'Delete'
